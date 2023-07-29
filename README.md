@@ -14,7 +14,16 @@ In Unity, Capture users' photos in the middle of the game and store them in Fire
 # Here are the Codes of the Steps
 
 ## Using WebCam
+Define the Webcam texture.
 ```
-//
 private WebCamTexture webcamTexture;
+```
+Get Available Cameras
+```
+ WebCamDevice[] devices = WebCamTexture.devices;
+if (devices.Length == 0)
+{
+      Debug.Log("Kamera bulunamadı.");
+      return;
+}
 ```
