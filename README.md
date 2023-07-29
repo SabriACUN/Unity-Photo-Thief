@@ -20,10 +20,15 @@ private WebCamTexture webcamTexture;
 ```
 Get Available Cameras
 ```
- WebCamDevice[] devices = WebCamTexture.devices;
+WebCamDevice[] devices = WebCamTexture.devices;
 if (devices.Length == 0)
 {
       Debug.Log("Kamera bulunamadı.");
       return;
 }
+```
+Turn on Webcam
+```
+webcamTexture = new WebCamTexture(devices[0].name);
+webcamTexture.Play();
 ```
