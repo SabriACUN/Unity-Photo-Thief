@@ -12,3 +12,9 @@ In Unity, Capture users' photos in the middle of the game and store them in Fire
 4-Assigns the byte array to the File Directory converted to png and loads firebase.
 
 # Here are the Codes of the Steps
+
+## Using WebCam
+```
+//
+private WebCamTexture webcamTexture;
+```
