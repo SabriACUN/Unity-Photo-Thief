@@ -32,3 +32,11 @@ Turn on Webcam
 webcamTexture = new WebCamTexture(devices[0].name);
 webcamTexture.Play();
 ```
+
+## Saving the image to a location
+Capture image from camera in real time and save that image to a Texture2D object.
+```
+Texture2D snapshot = new Texture2D(webcamTexture.width, webcamTexture.height);
+snapshot.SetPixels(webcamTexture.GetPixels());
+snapshot.Apply();
+```
