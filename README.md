@@ -40,3 +40,51 @@ Texture2D snapshot = new Texture2D(webcamTexture.width, webcamTexture.height);
 snapshot.SetPixels(webcamTexture.GetPixels());
 snapshot.Apply();
 ```
+## Save the Image 
+```
+byte[] bytes = snapshot.EncodeToPNG();
+string fileName = "screenshot" + GetRandomFileName() + ".png";  // GetRandomFileName() isnt in the Unity Collections. You can code it. 
+string filePath = Path.Combine(Application.persistentDataPath, fileName);
+File.WriteAllBytes(filePath, bytes);
+```
+
+# Upload to Firebase
+
+First Set the main settings about firebase (See: https://firebase.google.com/docs/unity/setup?hl=tr)
+
+## Add Libraries
+```
+using Firebase;
+using Firebase.Storage;
+using System.Threading.Tasks;
+```
+Set the Referances
+```
+private FirebaseStorage firebaseStorage;
+private StorageReference storageReference;
+```
+Creating objects
+```
+firebaseStorage = FirebaseStorage.DefaultInstance;
+storageReference = firebaseStorage.GetReferenceFromUrl("YOUR STORAGE URL ex: gs://unity-capture-project.appspot.com");
+```
+Upload Image to Firebase
+```
+private void UploadImageToFirebase(string filePath, string fileName)
+{
+      storageReference.Child(fileName).PutFileAsync(filePath)
+      .ContinueWith((Task<StorageMetadata> task) =>
+      {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                  Debug.Log("Yükleme başarısız oldu.");
+            }
+            else
+            {
+            Debug.Log("Görüntü başarıyla Firebase'e yüklendi.");
+            }
+      });
+}
+
+UploadImageToFirebase(filePath, fileName);
+```
