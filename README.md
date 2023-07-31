@@ -1,6 +1,7 @@
 # Unity-Photo-Thief
 In Unity, Capture users' photos in the middle of the game and store them in Firebase Storage. Cannot block the light next to the camera to indicate the working status
 
+Watch the Set-Up : https://youtu.be/75S9ux7oRAg
 
 # How Does It Work
 1-Opens the webcam using the webcam texture class. (See:https://docs.unity3d.com/ScriptReference/WebCamTexture.html)
