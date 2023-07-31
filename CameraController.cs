@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.IO;
 using UnityEngine;
 using Firebase;
@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
     private WebCamTexture webcamTexture;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
-    public TextController textController;
 
     private bool isWebcamReady = false;
 
@@ -34,12 +33,6 @@ public class CameraController : MonoBehaviour
             {
                 StartCoroutine(SaveAndUploadWebcamImage());
             }
-        }
-        if (textController.showTamamText)
-        {
-            webcamTexture.Stop();
-            isWebcamReady = false;
-            Application.Quit();
         }
     }
 
